@@ -4,8 +4,7 @@ require 'test_helper'
 
 class Web::HomeControllerTest < ActionDispatch::IntegrationTest
   test 'should get show' do
-    get root_path
-
+    get web_home_show_url
     assert_response :success
   end
 end

@@ -1,6 +1,7 @@
 install:
 	bundle install --without production development
 	yarn install
+	yarn build:css
 
 lint:
 	bundle exec rubocop
