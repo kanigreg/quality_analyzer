@@ -1,6 +1,9 @@
 install:
 	bundle install --without production development
 	yarn install
+
+build:
+	yarn build
 	yarn build:css
 
 lint:
