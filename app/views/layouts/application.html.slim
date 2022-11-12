@@ -1,11 +1,18 @@
 doctype html
 html
   head
-    title
+    title = t('.title')
     meta[name='viewport' content='width=device-width,initial-scale=1']
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
   body
-    = yield
+    footer
+      == render 'layouts/shared/nav'
+    main.mt-4.mb-5.pb-5
+      .container
+        == render 'layouts/shared/flash'
+        .p-4.align-items-center.border.shadow.bg-white.rounded-3
+          .mb-4
+            = yield

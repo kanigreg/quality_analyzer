@@ -1,0 +1,10 @@
+---
+
+en:
+  layouts:
+    application:
+      title: Quality analyzer
+    shared:
+      nav:
+        home: Home
+        logo: Analyzer
