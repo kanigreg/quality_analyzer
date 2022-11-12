@@ -1,0 +1,29 @@
+nav.navbar.navbar-expand-md.navbar-light.bg-light
+  .container-md
+    a.navbar-brand.fs-4(href='/') = t('.logo')
+    button.navbar-toggler(
+      type='button'
+      data={ 'bs-toggle': 'collapse', 'bs-target': '#navbarCollapse' }
+      aria={ controls: 'navbarCollapse', expanded: false, label: 'Toogle navigation' }
+    )
+      span.navbar-toggler-icon
+    #navbarCollapse.collapse.navbar-collapse
+      ul.navbar-nav.mb-2.mb-md-0
+        li.nav-item
+          = link_to t('.home'), root_path, class: 'nav-link link-dark'
+        - if user_signed_in?
+          li.nav-item
+            = link_to t('.my_bulletins'), profile_path, class: 'nav-link link-dark'
+          li.nav-item
+            = link_to t('.add_bulletin'), new_bulletin_path, class: 'nav-link link-dark'
+
+      ul.navbar-nav.ms-auto.mb-2.mb-md-0
+        - if user_signed_in? && current_user.admin?
+          li.nav-item
+            = link_to t('.admin_panel'), admin_dashboard_path, class: 'nav-link link-dark'
+        - if user_signed_in?
+          li.nav-item
+            = link_to t('.logout'), auth_logout_path, class: 'nav-link link-dark', method: :delete
+        - else
+          li.nav-item
+            = link_to t('.login'), auth_request_url(:github), class: 'nav-link link-dark', method: :post

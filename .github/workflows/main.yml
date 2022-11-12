@@ -28,5 +28,8 @@ jobs:
     - name: Install dependencies
       run: make install
 
+    - name: Check by linter
+      run: make lint
+
     - name: Run tests
       run: make test
