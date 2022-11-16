@@ -1,0 +1,12 @@
+---
+
+en:
+  web:
+    auth:
+      callback:
+        failure:
+          update: Can't update user.
+        success: Successfully.
+      logout:
+        success: Successfully logged out.
+      not_authenticated: You should sign in before.

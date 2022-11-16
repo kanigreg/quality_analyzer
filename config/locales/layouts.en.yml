@@ -7,4 +7,6 @@ en:
     shared:
       nav:
         home: Home
+        login: Login
         logo: Analyzer
+        logout: Logout

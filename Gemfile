@@ -75,6 +75,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+  gem 'faker'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
@@ -83,5 +84,8 @@ group :production do
   gem 'pg'
 end
 
+gem 'dotenv-rails'
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
 gem 'rollbar'
 gem 'slim-rails'

@@ -1,0 +1,12 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+DEFAULTS: &DEFAULTS
+  email: $LABEL@testing.me
+  nickname: $LABEL
+  token: <%= SecureRandom.base64 %>
+  image_url: 'https://avatars.githubusercontent.com/u/41334863'
+
+one:
+  <<: *DEFAULTS
+
+two:
+  <<: *DEFAULTS
