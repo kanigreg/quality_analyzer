@@ -1,0 +1,12 @@
+.mb-4
+  = link_to t('.new'), new_repository_path, class: 'btn btn-primary'
+
+table.table
+  thead
+    th = t('.name')
+    th = t('.language')
+  tbody
+    tr
+    - @repositories.each do |repo|
+      td = repo.name
+      td = repo.language

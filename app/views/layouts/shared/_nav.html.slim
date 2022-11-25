@@ -11,9 +11,14 @@ nav.navbar.navbar-expand-md.navbar-light.bg-light
       ul.navbar-nav.mb-2.mb-md-0
         li.nav-item
           = link_to t('.home'), root_path, class: 'nav-link link-dark'
+        - if signed_in?
+          li.nav-item
+            = link_to t('.repositories'), repositories_path, class: 'nav-link link-dark'
 
       ul.navbar-nav.ms-auto.mb-2.mb-md-0
         - if signed_in?
+          li.nav-item
+            = link_to current_user.email, '#', class: 'btn nav-link text-muted'
           li.nav-item
             = button_to t('.logout'), logout_path, class: 'btn nav-link link-dark', method: :delete
         - else

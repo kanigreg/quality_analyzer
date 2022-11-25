@@ -1,0 +1,4 @@
+= simple_form_for repo do |f|
+  = f.input :github_repo_id, collection: options_for_repos
+
+  = f.submit class: 'btn btn-primary'

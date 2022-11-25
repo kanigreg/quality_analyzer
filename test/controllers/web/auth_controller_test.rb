@@ -20,8 +20,8 @@ class Web::AuthControllerTest < ActionDispatch::IntegrationTest
 
     user = User.find_by!(email: auth_hash[:info][:email].downcase)
 
-    assert user.present?
-    assert signed_in?
+    assert { user.present? }
+    assert { signed_in? }
   end
 
   test 'should logout user' do
@@ -29,7 +29,7 @@ class Web::AuthControllerTest < ActionDispatch::IntegrationTest
 
     delete logout_path
 
-    assert_not signed_in?
+    assert { !signed_in? }
     assert_redirected_to root_path
   end
 end

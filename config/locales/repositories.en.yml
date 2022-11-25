@@ -1,0 +1,11 @@
+---
+
+en:
+  web:
+    repositories:
+      create:
+        failure: Failed to create repository.
+        success: Repository successfully created.
+      new:
+        failure:
+          fetch: Failed to load repository list.
