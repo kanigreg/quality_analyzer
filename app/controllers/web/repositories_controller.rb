@@ -10,18 +10,15 @@ class Web::RepositoriesController < Web::ApplicationController
   def new
     authenticate_user!
 
-    client = Octokit::Client.new access_token: current_user.token, auto_paginate: true
-
     @repository = current_user.repositories.new
-    begin
-      @optioins_for_repos =
-        client.repos
-              .select { |repo| Repository.language.values.include?(repo.language.downcase) }
-              .map { |repo| [repo.name, repo.id] }
-    rescue StandardError
-      @optioins_for_repos = []
-      flash.now[:alert] = t('.failure.fetch')
-    end
+
+    gihub_api = ApplicationContainer['github_api']
+    repos, status = gihub_api.repositories(current_user)
+    @options_for_repos =
+      repos.select { |repo| Repository.language.values.include?(repo[:language]&.downcase) }
+           .map { |repo| [repo[:name], repo[:id]] }
+
+    flash.now[:alert] = t('.failure.fetch') if status == :success
   end
 
   def create

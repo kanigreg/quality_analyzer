@@ -8,13 +8,13 @@ class RepositoryLoaderJob < ApplicationJob
 
     repository.fetch!
 
-    client = Octokit::Client.new(access_token: repository.user.token)
-    github_data = client.repo(repository.github_repo_id)
+    github_api = ApplicationContainer['github_api']
+    github_data = github_api.repository!(repository_id, repository.user)
 
     repository.update!(
-      name: github_data.name,
-      full_name: github_data.full_name,
-      language: github_data.language&.downcase
+      name: github_data[:name],
+      full_name: github_data[:full_name],
+      language: github_data[:language]&.downcase
     )
 
     repository.mark_as_fetched!

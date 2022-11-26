@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema[7.0].define(version: 2022_11_16_110931) do
   create_table "repositories", force: :cascade do |t|
-    t.integer "github_repo_id"
+    t.integer "github_repo_id", null: false
     t.string "name"
     t.string "full_name"
     t.string "language"
@@ -20,7 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_110931) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["github_repo_id"], name: "index_repositories_on_github_repo_id"
+    t.index ["github_repo_id"], name: "index_repositories_on_github_repo_id", unique: true
     t.index ["user_id"], name: "index_repositories_on_user_id"
   end
 

@@ -88,6 +88,7 @@ end
 
 gem 'aasm'
 gem 'dotenv-rails'
+gem 'dry-container'
 gem 'enumerize'
 gem 'octokit'
 gem 'omniauth-github'

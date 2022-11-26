@@ -18,15 +18,6 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get new' do
-    response = load_fixture('files/repositories.json')
-
-    stub_request(:get, 'https://api.github.com/user/repos?per_page=100')
-      .to_return(
-        status: 200,
-        body: response,
-        headers: { 'Content-Type': 'application/json' }
-      )
-
     get new_repository_path
 
     assert_response :success
