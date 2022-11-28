@@ -20,7 +20,7 @@ nav.navbar.navbar-expand-md.navbar-light.bg-light
           li.nav-item
             = link_to current_user.email, '#', class: 'btn nav-link text-muted'
           li.nav-item
-            = button_to t('.logout'), logout_path, class: 'btn nav-link link-dark', method: :delete
+            = link_to t('.logout'), logout_path, class: 'btn nav-link link-dark', data: { turbo_method: :delete }
         - else
-          li.nav-item
+          li.nav-item[data-turbo="false"]
             = button_to t('.login'), auth_request_url(:github), class: 'btn nav-link link-dark', method: :post
