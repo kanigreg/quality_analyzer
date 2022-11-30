@@ -8,6 +8,8 @@ class Repository < ApplicationRecord
 
   belongs_to :user
 
+  has_many :checks, dependent: :destroy
+
   validates :github_repo_id, presence: true, uniqueness: true
 
   aasm :state do

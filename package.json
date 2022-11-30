@@ -1,6 +1,6 @@
 {
   "name": "app",
-  "private": "true",
+  "private": true,
   "dependencies": {
     "@hotwired/stimulus": "^3.1.1",
     "@hotwired/turbo-rails": "^7.2.4",
@@ -8,10 +8,17 @@
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.9.1",
     "esbuild": "^0.15.13",
+    "eslint": "^8.28.0",
     "sass": "^1.56.1"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
     "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
-  }
+  },
+  "version": "1.0.0",
+  "description": "Github repo analyzer",
+  "main": "app/javascript/application.js",
+  "repository": "git@github.com:kanigreg/rails-project-66.git",
+  "author": "kanigreg <kanigreg@gmail.com>",
+  "license": "MIT"
 }

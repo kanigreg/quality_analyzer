@@ -1,0 +1,15 @@
+---
+
+en:
+  web:
+    repositories:
+      checks:
+        create:
+          failure: Failed to check repository
+          success: Checking in progress
+        show:
+          check: "Check #%{id}"
+          go_to_repository: Go to repository
+          line_column: Line column
+          message: Message
+          rule: Rule

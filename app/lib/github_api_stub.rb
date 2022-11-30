@@ -11,5 +11,7 @@ class GithubApiStub
       response = Rails.root.join('test/fixtures/files/repositories.json').read
       [JSON.parse(response, symbolize_names: true), :success]
     end
+
+    def clone!(_repo, _dest); end
   end
 end

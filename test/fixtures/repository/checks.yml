@@ -1,0 +1,16 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  state: checking
+  reference: 5acf74f
+  repository: one
+
+finished_with_issues:
+  state: finished
+  reference: 5acf74f
+  passed: false
+  repository: one
+
+checking:
+  state: checking
+  repository: one

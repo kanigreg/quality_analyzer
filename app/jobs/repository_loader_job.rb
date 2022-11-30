@@ -9,7 +9,7 @@ class RepositoryLoaderJob < ApplicationJob
     repository.fetch!
 
     github_api = ApplicationContainer['github_api']
-    github_data = github_api.repository!(repository_id, repository.user)
+    github_data = github_api.repository!(repository.github_repo_id, repository.user)
 
     repository.update!(
       name: github_data[:name],
@@ -19,7 +19,9 @@ class RepositoryLoaderJob < ApplicationJob
 
     repository.mark_as_fetched!
   rescue StandardError => e
-    logger.error "RepositoryLoaderJob: #{e.message}"
+    Rails.logger.error e.message
+    Rollbar.error(e)
+
     repository.mark_as_failed!
   end
 end

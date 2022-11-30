@@ -1,0 +1,14 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+DEFAULTS: &DEFAULTS
+  message: "'app' is not defined"
+  rule: no-undef
+  line: 1
+  column: 2
+
+one:
+  <<: *DEFAULTS
+  repository_check: finished_with_issues
+
+two:
+  <<: *DEFAULTS
+  repository_check: finished_with_issues

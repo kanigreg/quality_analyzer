@@ -17,6 +17,12 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should get show' do
+    get repository_path(@repo)
+
+    assert_response :success
+  end
+
   test 'should get new' do
     get new_repository_path
 

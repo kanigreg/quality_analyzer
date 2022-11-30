@@ -1,0 +1,23 @@
+en:
+  activerecord:
+    attributes:
+      check:
+        created_at: Created at
+        issues_count: Issues count
+        passed: Check passed
+        reference: Reference
+        state: State
+        state/checking: Checking
+        state/failed: Failed
+        state/finished: Finished
+      repository:
+        created_at: Created at
+        full_name: Name
+        language: Language
+        name: Name
+        state: State
+        state/created: Created
+        state/failed: Failed
+        state/fetched: Fetched
+        state/fetching: Fetching
+        updated_at: Updated at

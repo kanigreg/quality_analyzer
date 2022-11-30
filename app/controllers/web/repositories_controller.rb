@@ -4,7 +4,15 @@ class Web::RepositoriesController < Web::ApplicationController
   def index
     authenticate_user!
 
-    @repositories = current_user.repositories
+    @repositories = current_user.repositories.includes(:checks)
+  end
+
+  def show
+    authenticate_user!
+
+    @repository = Repository.includes(:checks)
+                            .order('repository_checks.created_at': :desc)
+                            .find(params[:id])
   end
 
   def new
@@ -12,13 +20,13 @@ class Web::RepositoriesController < Web::ApplicationController
 
     @repository = current_user.repositories.new
 
-    gihub_api = ApplicationContainer['github_api']
-    repos, status = gihub_api.repositories(current_user)
+    github_api = ApplicationContainer['github_api']
+    repos, status = github_api.repositories(current_user)
     @options_for_repos =
       repos.select { |repo| Repository.language.values.include?(repo[:language]&.downcase) }
            .map { |repo| [repo[:name], repo[:id]] }
 
-    flash.now[:alert] = t('.failure.fetch') if status == :success
+    flash.now[:alert] = t('.failure.fetch') if status == :failure
   end
 
   def create

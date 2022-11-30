@@ -6,6 +6,10 @@ en:
       create:
         failure: Failed to create repository.
         success: Repository successfully created.
+      index:
+        not_checked: Not checked
       new:
         failure:
           fetch: Failed to load repository list.
+      show:
+        check: Check

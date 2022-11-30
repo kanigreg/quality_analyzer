@@ -63,6 +63,7 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'i18n-debug'
   gem 'web-console'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -93,6 +94,7 @@ gem 'enumerize'
 gem 'octokit'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
+gem 'open3'
 gem 'rollbar'
 gem 'simple_form'
 gem 'slim-rails'
