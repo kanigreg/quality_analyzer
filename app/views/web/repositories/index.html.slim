@@ -1,14 +1,14 @@
 .mb-4
   = link_to t('.new'), new_repository_path, class: 'btn btn-primary'
 
-table.table
+table.table.table-hover
   thead
     th = t('activerecord.attributes.repository.name')
     th = t('activerecord.attributes.repository.language')
     th = t('activereocrd.attributes.check.passed')
   tbody
-    tr
     - @repositories.each do |repo|
-      td = link_to repo.name || 'loading...', repo
-      td = repo.language
-      td = repo.checks.last&.passed || t('.not_checked')
+      tr.position-relative
+        td = link_to repo.name || '-', repo, class: 'stretched-link'
+        td = repo.language
+        td = repo.checks.last&.passed || t('.not_checked')

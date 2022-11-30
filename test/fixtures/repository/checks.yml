@@ -14,3 +14,7 @@ finished_with_issues:
 checking:
   state: checking
   repository: one
+
+ruby_repo_checking:
+  state: checking
+  repository: ruby

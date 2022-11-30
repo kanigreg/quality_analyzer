@@ -10,15 +10,16 @@ table.table.table-borderless.w-auto
     tr
       td: strong = t('activerecord.attrbiutes.check.state')
       td = @check.state
-    tr
-      td: strong = t('activerecord.attrbiutes.check.passed')
-      td = @check.passed
-    tr
-      td: strong = t('activerecord.attrbiutes.check.issues_count')
-      td = @check.issues.size
-    tr
-      td: strong = t('activerecord.attrbiutes.check.reference')
-      td = link_to_commit(@check)
+    - if @check.finished?
+      tr
+        td: strong = t('activerecord.attrbiutes.check.passed')
+        td = @check.passed
+      tr
+        td: strong = t('activerecord.attrbiutes.check.issues_count')
+        td = @check.issues.size
+      tr
+        td: strong = t('activerecord.attrbiutes.check.reference')
+        td = link_to_commit(@check)
 
 table.table.table-hover
   thead

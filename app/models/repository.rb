@@ -4,7 +4,7 @@ class Repository < ApplicationRecord
   include AASM
   extend Enumerize
 
-  enumerize :language, in: %w[javascript]
+  enumerize :language, in: %w[javascript ruby]
 
   belongs_to :user
 

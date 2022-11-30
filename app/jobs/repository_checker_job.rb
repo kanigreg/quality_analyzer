@@ -14,7 +14,15 @@ class RepositoryCheckerJob < ApplicationJob
     begin
       github_api.clone!(repo, repo_destination)
 
-      issues, check_status = Eslint.check(repo_destination)
+      issues, check_status =
+        case repo.language
+        when 'javascript'
+          Eslint.check(repo_destination)
+        when 'ruby'
+          Rubocop.check(repo_destination)
+        else
+          raise "Unexpected repository language: #{repo.language}"
+        end
 
       check.passed = check_status.success?
       check.reference = storage.head_commit!(repo)

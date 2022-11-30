@@ -23,3 +23,10 @@ unloaded:
   github_repo_id: 3
   user: one
   state: created
+
+ruby:
+  github_repo_id: 4
+  full_name: ruby/repo
+  language: ruby
+  user: one
+  state: fetched
