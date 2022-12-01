@@ -3,7 +3,7 @@
 class Rubocop
   class << self
     def check(dest)
-      command = "bundle exec rubocop -f json -c .rubocop.yml #{dest}"
+      command = "bundle exec rubocop -f json -c lib/linter_configs/.rubocop.yml #{dest}"
       output, status = Open3.popen3(command) do |_, stdout, _, thread|
         parsed = JSON.parse(stdout.read)
         [parsed['files'], thread.value]
