@@ -48,7 +48,7 @@ class GithubApi
     private
 
     def secret
-      ENV.fetch('GITHUB_CLIENT_SECRET')
+      ENV.fetch('GITHUB_CLIENT_SECRET', nil)
     end
   end
 end
