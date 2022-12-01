@@ -13,5 +13,11 @@ class GithubApiStub
     end
 
     def clone!(_repo, _dest); end
+
+    def create_hook!(_repo, _urser); end
+
+    def webhook_request?(_payload, _signature)
+      true
+    end
   end
 end

@@ -17,6 +17,8 @@ class RepositoryLoaderJob < ApplicationJob
       language: github_data[:language]&.downcase
     )
 
+    github_api.create_hook!(repository, repository.user)
+
     repository.mark_as_fetched!
   rescue StandardError => e
     Rails.logger.error e.message
