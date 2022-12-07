@@ -6,28 +6,22 @@ class RepositoryCheckerJob < ApplicationJob
   after_perform do |job|
     check = Repository::Check.find(job.arguments.first)
 
-    return if check.finished? && check.issues.size.zero?
+    if check.failed? || check.issues.size.positive?
+      user = check.repository.user
 
-    user = check.repository.user
-
-    mailer_attrs = {
-      id: check.id,
-      email: user.email,
-      repo_id: check.repository.id
-    }
-    CheckMailer.with(mailer_attrs).failure_report.deliver_later
+      mailer_attrs = { id: check.id, email: user.email, repo_id: check.repository.id }
+      CheckMailer.with(mailer_attrs).failure_report.deliver_later
+    end
   end
 
   def perform(check_id)
     github_api = ApplicationContainer[:github_api]
     storage = ApplicationContainer[:storage]
 
+    repo_destination = storage.repo_dest(check_id)
     check = Repository::Check.find(check_id)
     repo = check.repository
-    repo_destination = storage.repo_dest(repo)
 
-    # FIXME: another parallel job may erase the directory before checking
-    storage.erase!(check.repository)
     github_api.clone!(repo, repo_destination)
 
     issues, check_status =
@@ -50,5 +44,7 @@ class RepositoryCheckerJob < ApplicationJob
     Rollbar.error(e)
 
     check.mark_as_failed!
+  ensure
+    storage.erase(check_id)
   end
 end

@@ -13,6 +13,6 @@ class Api::ChecksControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :created
     assert { check.present? }
-    assert_performed_jobs 2
+    assert_performed_jobs 1
   end
 end

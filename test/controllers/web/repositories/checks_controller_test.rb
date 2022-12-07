@@ -21,6 +21,6 @@ class Web::Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to repository_path(repo)
-    assert_performed_jobs 2
+    assert_performed_jobs 1
   end
 end

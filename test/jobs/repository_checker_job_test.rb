@@ -12,8 +12,8 @@ class RepositoryCheckerJobTest < ActiveJob::TestCase
 
     assert { check.finished? }
     assert { check.reference.present? }
-    refute { check.issues.empty? }
-    refute { check.passed? }
+    assert { check.issues.empty? }
+    assert { check.passed? }
   end
 
   test 'should check ruby repo' do
@@ -25,7 +25,7 @@ class RepositoryCheckerJobTest < ActiveJob::TestCase
 
     assert { check.finished? }
     assert { check.reference.present? }
-    refute { check.issues.empty? }
-    refute { check.passed? }
+    assert { check.issues.empty? }
+    assert { check.passed? }
   end
 end

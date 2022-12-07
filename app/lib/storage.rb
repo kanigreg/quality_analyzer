@@ -2,8 +2,8 @@
 
 class Storage
   class << self
-    def repo_dest(repo)
-      "/tmp/quality_analyzer/repos/#{repo.github_id}"
+    def repo_dest(dir_name)
+      "/tmp/quality_analyzer/repos/#{dir_name}"
     end
 
     def head_commit!(repo)
@@ -15,11 +15,11 @@ class Storage
       commit_ref
     end
 
-    def erase!(repo)
-      command = "rm -fr #{repo_dest(repo)}"
-      _, error_mes, status = Open3.capture3(command)
+    def erase(dir_name)
+      command = "rm -fr #{repo_dest(dir_name)}"
+      _, _, status = Open3.capture3(command)
 
-      raise "Failed to remove sources directory. #{error_mes}" unless status.success?
+      status.success?
     end
   end
 end
