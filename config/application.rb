@@ -13,7 +13,7 @@ module QualityAnalyzer
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
-    routes.default_url_options = { host: ENV.fetch('BASE_URL', 'localhost') }
+    routes.default_url_options = { host: ENV.fetch('BASE_URL', 'http://localhost:3000') }
 
     # Configuration for the application, engines, and railties goes here.
     #

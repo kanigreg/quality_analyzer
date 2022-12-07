@@ -13,6 +13,6 @@ class Api::ChecksControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :created
     assert { check.present? }
-    assert_enqueued_with job: RepositoryCheckerJob
+    assert_performed_jobs 2
   end
 end

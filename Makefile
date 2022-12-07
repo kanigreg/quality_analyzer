@@ -17,4 +17,7 @@ setup:
 test:
 	bin/rails test
 
+start:
+	bin/rails s -b '0.0.0.0'
+
 .PHONY: test

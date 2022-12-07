@@ -21,6 +21,6 @@ class Web::Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to repository_path(repo)
-    assert_enqueued_with job: RepositoryCheckerJob
+    assert_performed_jobs 2
   end
 end

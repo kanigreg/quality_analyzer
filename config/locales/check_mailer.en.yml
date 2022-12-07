@@ -1,0 +1,9 @@
+---
+
+en:
+  check_mailer:
+    failure_report:
+      check: Check
+      checked: Checked
+      failed: Check failed. Follow link to show details.
+      subject: You repository has been checked.
