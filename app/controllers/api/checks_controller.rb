@@ -10,7 +10,7 @@ class Api::ChecksController < Api::ApplicationController
       error_mes = "Failed to check a repository with github_id: #{repository_params[:id]}"
       Rollbar.critical error_mes
 
-      respond_with({ error: error_mes }, location: nil, status: :unprcessable_entity)
+      respond_with({ error: error_mes }.as_json, location: nil, status: :unprcessable_entity)
     end
 
     check = repo.checks.new
@@ -19,7 +19,7 @@ class Api::ChecksController < Api::ApplicationController
       RepositoryCheckerJob.perform_later(check.id)
     end
 
-    respond_with(check, location: nil, status: :created)
+    respond_with(check.as_json, location: nil, status: :created)
   end
 
   private
