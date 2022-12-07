@@ -8,8 +8,8 @@ table.table.table-borderless.w-auto
       td: strong = t('activerecord.attrbiutes.check.created_at')
       td = l(@check.created_at, format: :long)
     tr
-      td: strong = t('activerecord.attrbiutes.check.state')
-      td = @check.state
+      td: strong = t('activerecord.attrbiutes.check.aasm_state')
+      td = @check.aasm_state
     - if @check.finished?
       tr
         td: strong = t('activerecord.attrbiutes.check.passed')

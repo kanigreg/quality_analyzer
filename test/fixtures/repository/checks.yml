@@ -1,20 +1,20 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  state: checking
+  aasm_state: checking
   reference: 5acf74f
   repository: one
 
 finished_with_issues:
-  state: finished
+  aasm_state: finished
   reference: 5acf74f
   passed: false
   repository: one
 
 checking:
-  state: checking
+  aasm_state: checking
   repository: one
 
 ruby_repo_checking:
-  state: checking
+  aasm_state: checking
   repository: ruby

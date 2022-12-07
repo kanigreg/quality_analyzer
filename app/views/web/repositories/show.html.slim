@@ -21,7 +21,7 @@ table.table.table-hover
   thead
     tr
       th
-      th = t('activerecord.attributes.check.state')
+      th = t('activerecord.attributes.check.aasm_state')
       th = t('activerecord.attributes.check.reference')
       th = t('activerecord.attributes.check.passed')
       th = t('activerecord.attributes.check.created_at')
@@ -30,7 +30,7 @@ table.table.table-hover
       tr
         td.position-relative
           = link_to check.id, repository_check_path(@repository, check), class: 'stretched-link'
-        td = check.state
+        td = check.aasm_state
         td = link_to_commit(check)
         td = check.passed
         td = l(check.created_at, format: :short)

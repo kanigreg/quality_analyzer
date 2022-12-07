@@ -10,7 +10,7 @@ class Repository::Check < ApplicationRecord
                     foreign_key: :repository_check_id,
                     class_name: 'Repository::Check::Issue'
 
-  aasm :state do
+  aasm do
     state :checking, initial: true
     state :finished
     state :failed

@@ -6,10 +6,10 @@ en:
         issues_count: Issues count
         passed: Check passed
         reference: Reference
-        state: State
-        state/checking: Checking
-        state/failed: Failed
-        state/finished: Finished
+        aasm_state: State
+        aasm_state/checking: Checking
+        aasm_state/failed: Failed
+        aasm_state/finished: Finished
       repository:
         created_at: Created at
         full_name: Name

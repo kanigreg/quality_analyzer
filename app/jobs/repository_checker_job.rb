@@ -12,7 +12,6 @@ class RepositoryCheckerJob < ApplicationJob
 
     mailer_attrs = {
       id: check.id,
-      status: check.state,
       email: user.email,
       repo_id: check.repository.id
     }
