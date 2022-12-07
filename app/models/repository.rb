@@ -10,7 +10,7 @@ class Repository < ApplicationRecord
 
   has_many :checks, dependent: :destroy
 
-  validates :github_repo_id, presence: true, uniqueness: true
+  validates :github_id, presence: true, uniqueness: true
 
   aasm :state do
     state :created, initial: true

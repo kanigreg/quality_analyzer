@@ -46,6 +46,6 @@ class Web::RepositoriesController < Web::ApplicationController
   private
 
   def repository_params
-    params.require(:repository).permit(:github_repo_id)
+    params.require(:repository).permit(:github_id)
   end
 end

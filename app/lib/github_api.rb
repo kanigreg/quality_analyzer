@@ -31,7 +31,7 @@ class GithubApi
       client = Octokit::Client.new(access_token: user.token)
       callback_url = Rails.application.routes.url_helpers.api_checks_url
       client.create_hook(
-        repo.github_repo_id,
+        repo.github_id,
         'web',
         { url: callback_url, content_type: 'json', secret: secret },
         { active: true }

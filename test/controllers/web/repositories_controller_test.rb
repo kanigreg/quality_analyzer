@@ -8,7 +8,7 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
 
     sign_in @repo.user
 
-    @attrs = { github_repo_id: 123_456 }
+    @attrs = { github_id: 123_456 }
   end
 
   test 'should get index' do

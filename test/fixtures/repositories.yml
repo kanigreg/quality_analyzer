@@ -6,26 +6,26 @@
 #
 
 one:
-  github_repo_id: 1
+  github_id: 1
   full_name: one/repo-one
   language: javascript
   user: one
   state: fetched
 
 two:
-  github_repo_id: 2
+  github_id: 2
   full_name: one/repo-two
   language: javascript
   user: one
   state: fetched
 
 unloaded:
-  github_repo_id: 3
+  github_id: 3
   user: one
   state: created
 
 ruby:
-  github_repo_id: 4
+  github_id: 4
   full_name: ruby/repo
   language: ruby
   user: one

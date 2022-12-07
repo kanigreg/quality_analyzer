@@ -9,7 +9,7 @@ class RepositoryLoaderJob < ApplicationJob
     repository.fetch!
 
     github_api = ApplicationContainer['github_api']
-    github_data = github_api.repository!(repository.github_repo_id, repository.user)
+    github_data = github_api.repository!(repository.github_id, repository.user)
 
     repository.update!(
       name: github_data[:name],

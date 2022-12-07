@@ -3,7 +3,7 @@
 class Storage
   class << self
     def repo_dest(repo)
-      "/tmp/quality_analyzer/repos/#{repo.github_repo_id}"
+      "/tmp/quality_analyzer/repos/#{repo.github_id}"
     end
 
     def head_commit!(repo)
