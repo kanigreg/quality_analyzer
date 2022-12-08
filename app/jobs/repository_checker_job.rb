@@ -6,7 +6,7 @@ class RepositoryCheckerJob < ApplicationJob
   after_perform do |job|
     check = Repository::Check.find(job.arguments.first)
 
-    if check.failed? || check.issues.size.positive?
+    unless check.passed?
       user = check.repository.user
 
       mailer_attrs = { check_id: check.id, email: user.email, repo_id: check.repository.id }
