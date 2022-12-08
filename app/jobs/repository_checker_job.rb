@@ -9,7 +9,7 @@ class RepositoryCheckerJob < ApplicationJob
     if check.failed? || check.issues.size.positive?
       user = check.repository.user
 
-      mailer_attrs = { id: check.id, email: user.email, repo_id: check.repository.id }
+      mailer_attrs = { check_id: check.id, email: user.email, repo_id: check.repository.id }
       CheckMailer.with(mailer_attrs).failure_report.deliver_later
     end
   end
