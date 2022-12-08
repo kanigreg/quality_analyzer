@@ -4,14 +4,7 @@ class Api::ChecksController < Api::ApplicationController
   def create
     verify_webhook!
 
-    repo = Repository.find_by(github_id: repository_params[:id])
-
-    if repo.nil?
-      error_mes = "Failed to check a repository with github_id: #{repository_params[:id]}"
-      Rollbar.critical error_mes
-
-      respond_with({ error: error_mes }.as_json, location: nil, status: :unprcessable_entity)
-    end
+    repo = Repository.find_by!(github_id: repository_params[:id])
 
     check = repo.checks.new
 
