@@ -35,7 +35,7 @@ class RepositoryCheckerJob < ApplicationJob
       end
 
     check.passed = check_status.success?
-    check.reference = storage.head_commit!(repo)
+    check.reference = storage.head_commit!(repo_destination)
     check.issues.build(issues)
 
     check.mark_as_finished!

@@ -6,8 +6,8 @@ class Storage
       "/tmp/quality_analyzer/repos/#{dir_name}"
     end
 
-    def head_commit!(repo)
-      command = "git -C #{repo_dest(repo)} rev-parse --short HEAD"
+    def head_commit!(dir_path)
+      command = "git -C #{dir_path} rev-parse --short HEAD"
       commit_ref, error_mes, status = Open3.capture3(command)
 
       raise "Failed to retrive commit reference. #{error_mes}" unless status.success?
