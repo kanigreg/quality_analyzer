@@ -11,6 +11,7 @@ Supported languages:
 - JavaScript
 - Ruby
 
+Try [demo](https://quality-analyzer.up.railway.app/)
 ## Usage
 
 Clone repo and execute:
