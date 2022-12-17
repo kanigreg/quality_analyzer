@@ -13,6 +13,8 @@ class Web::RepositoriesController < Web::ApplicationController
     @repository = Repository.includes(:checks)
                             .order('repository_checks.created_at': :desc)
                             .find(params[:id])
+
+    authorize @repository
   end
 
   def new

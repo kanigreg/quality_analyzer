@@ -14,6 +14,8 @@ class Web::Repositories::ChecksController < Web::Repositories::ApplicationContro
     repo = Repository.find(params[:repository_id])
     check = repo.checks.new
 
+    authorize check
+
     if check.save
       RepositoryCheckerJob.perform_later(check.id)
       redirect_to repository_path(repo), notice: t('.success')

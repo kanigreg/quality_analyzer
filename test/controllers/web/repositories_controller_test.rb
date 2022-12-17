@@ -23,6 +23,14 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should deny access' do
+    repo = repositories(:two)
+
+    get repository_path(repo)
+
+    assert_redirected_to root_path
+  end
+
   test 'should get new' do
     get new_repository_path
 

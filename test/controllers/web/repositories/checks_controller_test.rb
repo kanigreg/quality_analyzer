@@ -23,4 +23,12 @@ class Web::Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to repository_path(repo)
     assert_performed_jobs 1
   end
+
+  test 'should deny access' do
+    repo = repositories(:two)
+
+    get repository_path(repo)
+
+    assert_redirected_to root_path
+  end
 end

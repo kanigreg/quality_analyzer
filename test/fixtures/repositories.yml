@@ -14,9 +14,9 @@ one:
 
 two:
   github_id: 2
-  full_name: one/repo-two
+  full_name: two/repo-two
   language: javascript
-  user: one
+  user: two
   state: fetched
 
 unloaded:
