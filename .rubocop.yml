@@ -1,17 +1,23 @@
-require: rubocop-rails
+---
+
+require:
+  - rubocop-performance
+  - rubocop-rails
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.0.2
-  TargetRailsVersion: 6
-  DisplayCopNames: true
+  TargetRubyVersion: 3.1.2
+  TargetRailsVersion: 7
   Exclude:
-    - 'bin/**'
-    - 'db/schema.rb'
-    - 'db/migrate/**'
+    - 'code/bin/**'
+    - 'code/db/schema.rb'
+    - 'code/db/migrate/**'
+    - 'code/vendor/**/*'
+    - 'code/node_modules/**/*'
     - 'vendor/**/*'
     - 'node_modules/**/*'
-    - 'test/fixtures/files/repos/**/*'
+    - 'code/tmp/**/*'
+  SuggestExtensions: false
 
 Rails:
   Enabled: true
@@ -40,5 +46,5 @@ Metrics/BlockLength:
 Style/AsciiComments:
   Enabled: false
 
-Rails/RefuteMethods:
+Metrics/ParameterLists:
   Enabled: false
