@@ -11,7 +11,7 @@ class Api::ChecksControllerTest < ActionDispatch::IntegrationTest
     data = JSON.parse(response.body)
     check = Repository::Check.find(data['id'])
 
-    assert_response :created
+    assert_response :success
     assert { check.present? }
     assert_performed_jobs 1
   end
