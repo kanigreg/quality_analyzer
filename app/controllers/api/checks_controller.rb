@@ -12,7 +12,7 @@ class Api::ChecksController < Api::ApplicationController
       RepositoryCheckerJob.perform_later(check.id)
     end
 
-    respond_with(check.as_json, location: nil, status: :created)
+    respond_with(check.as_json, location: nil, status: :ok)
   end
 
   private
