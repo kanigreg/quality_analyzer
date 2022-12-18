@@ -3,9 +3,9 @@
 class Eslint
   class << self
     def check(dest)
-      command = "yarn run eslint -f json -c lib/linter_configs/.eslintrc.yml #{dest}"
+      command = "npx eslint -f json -c lib/linter_configs/.eslintrc.yml #{dest}"
       output, status = Open3.popen3(command) do |_, stdout, _, thread|
-        parsed = JSON.parse(stdout.to_a[2])
+        parsed = JSON.parse(stdout.read)
         [parsed, thread.value]
       end
 
