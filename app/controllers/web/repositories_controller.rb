@@ -22,11 +22,11 @@ class Web::RepositoriesController < Web::ApplicationController
 
     @repository = current_user.repositories.new
 
-    github_api = ApplicationContainer['github_api']
-    repos, status = github_api.repositories(current_user)
-    @options_for_repos =
-      repos.select { |repo| Repository.language.values.include?(repo[:language]&.downcase) }
-           .map { |repo| [repo[:name], repo[:id]] }
+    # rubocop:disable Rails/SkipsModelValidations
+    current_user.touch if params[:invalidate_cache]
+    # rubocop:enable Rails/SkipsModelValidations
+
+    @options_for_repos, status = current_user.repo_names
 
     flash.now[:alert] = t('.failure.fetch') if status == :failure
   end
@@ -41,7 +41,7 @@ class Web::RepositoriesController < Web::ApplicationController
       redirect_to repositories_path, notice: t('.success')
     else
       flash[:alert] = t('.failure')
-      render :new, status: :unprocessable_entity
+      redirect_to new_repository_path
     end
   end
 

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
     resources :repositories, only: %i[index show new create] do
       resources :checks, only: %i[create show], module: :repositories
+
+      patch :refresh
     end
   end
 end
