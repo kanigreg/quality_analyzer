@@ -4,7 +4,9 @@ class Repository < ApplicationRecord
   include AASM
   extend Enumerize
 
-  enumerize :language, in: %w[javascript ruby]
+  ALLOWED_LANGUAGES = %w[javascript ruby].freeze
+
+  enumerize :language, in: ALLOWED_LANGUAGES
 
   belongs_to :user
 

@@ -21,7 +21,7 @@ class Eslint
             rule: mes['ruleId'],
             line: mes['line'],
             column: mes['column'],
-            file_path: file_path
+            file_path:
           }
         end
       end

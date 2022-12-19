@@ -33,7 +33,7 @@ class GithubApi
       client.create_hook(
         repo.github_id,
         'web',
-        { url: callback_url, content_type: 'json', secret: secret },
+        { url: callback_url, content_type: 'json', secret: },
         { active: true }
       )
     end
