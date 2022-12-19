@@ -5,6 +5,9 @@ class Web::Repositories::ChecksController < Web::Repositories::ApplicationContro
     authenticate_user!
 
     @check = Repository::Check.includes(:issues).find(params[:id])
+
+    authorize @check
+
     @issues = @check.issues.group_by(&:file_path)
   end
 
