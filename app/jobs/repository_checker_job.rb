@@ -17,7 +17,10 @@ class RepositoryCheckerJob < ApplicationJob
   def perform(check_id)
     storage = ApplicationContainer[:storage]
 
-    check = Repository::Check.find(check_id)
+    check = Repository::Check.find_by(id: check_id)
+
+    return if check.blank?
+
     check.check!
     repo = check.repository
 
