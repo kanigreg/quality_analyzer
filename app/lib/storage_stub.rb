@@ -2,15 +2,15 @@
 
 class StorageStub
   class << self
-    def repo_dest(_dir_name)
+    def repo_dest(*_args)
       Rails.root.join('test/fixtures/files/repos/javascript').to_s
     end
 
-    def head_commit!(_dest)
+    def head_commit!(*_args)
       'fabdace'
     end
 
-    def erase(_dir_name)
+    def erase(*_args)
       true
     end
   end
