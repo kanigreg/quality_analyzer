@@ -12,8 +12,6 @@ class GithubApiStub
       [JSON.parse(response, symbolize_names: true), :success]
     end
 
-    def clone!(*_args); end
-
     def create_hook!(*_args); end
 
     def webhook_request?(*_args)

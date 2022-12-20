@@ -13,5 +13,9 @@ class StorageStub
     def erase(*_args)
       true
     end
+
+    def clone!(*_args)
+      repo_dest
+    end
   end
 end

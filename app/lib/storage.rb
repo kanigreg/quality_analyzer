@@ -15,11 +15,22 @@ class Storage
       commit_ref
     end
 
-    def erase(dir_name)
-      command = "rm -fr #{repo_dest(dir_name)}"
+    def erase(dest)
+      command = "rm -fr #{dest}"
       _, _, status = Open3.capture3(command)
 
       status.success?
+    end
+
+    def clone!(repo, dir_name)
+      dest = repo_dest(dir_name)
+      github_repo = Octokit::Repository.new repo.full_name
+      command = "git clone #{github_repo.url} #{dest}"
+      _, error_mes, status = Open3.capture3(command)
+
+      raise "Failed to clone repo. #{error_mes}" unless status.success?
+
+      dest
     end
   end
 end

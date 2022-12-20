@@ -15,16 +15,13 @@ class RepositoryCheckerJob < ApplicationJob
   end
 
   def perform(check_id)
-    github_api = ApplicationContainer[:github_api]
     storage = ApplicationContainer[:storage]
 
-    repo_destination = storage.repo_dest(check_id)
     check = Repository::Check.find(check_id)
     check.check!
     repo = check.repository
 
-    github_api.clone!(repo, repo_destination)
-
+    repo_destination = storage.clone!(repo, check_id)
     issues, check_status =
       case repo.language
       when 'javascript'
@@ -46,6 +43,6 @@ class RepositoryCheckerJob < ApplicationJob
 
     check.mark_as_failed!
   ensure
-    storage.erase(check_id)
+    storage.erase(repo_destination)
   end
 end
