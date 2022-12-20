@@ -22,7 +22,7 @@ class Storage
       status.success?
     end
 
-    def clone!(repo, dir_name)
+    def download!(repo, dir_name)
       dest = repo_dest(dir_name)
       github_repo = Octokit::Repository.new repo.full_name
       command = "git clone #{github_repo.url} #{dest}"

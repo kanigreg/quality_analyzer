@@ -14,7 +14,7 @@ class StorageStub
       true
     end
 
-    def clone!(*_args)
+    def download!(*_args)
       repo_dest
     end
   end

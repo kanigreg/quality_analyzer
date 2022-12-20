@@ -24,7 +24,7 @@ class RepositoryCheckerJob < ApplicationJob
     check.start!
     repo = check.repository
 
-    repo_destination = storage.clone!(repo, check_id)
+    repo_destination = storage.download!(repo, check_id)
     issues, check_status =
       case repo.language
       when 'javascript'
