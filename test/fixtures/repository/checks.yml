@@ -14,7 +14,3 @@ finished_with_issues:
 created:
   aasm_state: created
   repository: one
-
-ruby_repo_check:
-  aasm_state: created
-  repository: ruby

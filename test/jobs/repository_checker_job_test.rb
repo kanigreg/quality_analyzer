@@ -15,17 +15,4 @@ class RepositoryCheckerJobTest < ActiveJob::TestCase
     assert { check.issues.empty? }
     assert { check.passed? }
   end
-
-  test 'should check ruby repo' do
-    check = repository_checks(:ruby_repo_check)
-
-    RepositoryCheckerJob.perform_now(check.id)
-
-    check.reload
-
-    assert { check.finished? }
-    assert { check.reference.present? }
-    assert { check.issues.empty? }
-    assert { check.passed? }
-  end
 end
