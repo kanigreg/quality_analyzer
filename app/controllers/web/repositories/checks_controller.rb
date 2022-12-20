@@ -4,9 +4,11 @@ class Web::Repositories::ChecksController < Web::Repositories::ApplicationContro
   def show
     authenticate_user!
 
-    @check = Repository::Check.includes(:issues).find(params[:id])
+    repo = Repository.find(params[:repository_id])
 
-    authorize @check
+    authorize repo, :check?
+
+    @check = repo.checks.includes(:issues).find(params[:id])
 
     @issues = @check.issues.group_by(&:file_path)
   end
@@ -15,9 +17,10 @@ class Web::Repositories::ChecksController < Web::Repositories::ApplicationContro
     authenticate_user!
 
     repo = Repository.find(params[:repository_id])
-    check = repo.checks.new
 
-    authorize check
+    authorize repo, :check?
+
+    check = repo.checks.new
 
     if check.save
       RepositoryCheckerJob.perform_later(check.id)

@@ -5,9 +5,13 @@ class RepositoryPolicy < ApplicationPolicy
     owner?
   end
 
+  def check?
+    owner?
+  end
+
   private
 
   def owner?
-    record&.user == user
+    record&.user_id == user.id
   end
 end
