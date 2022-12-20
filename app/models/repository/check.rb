@@ -16,7 +16,7 @@ class Repository::Check < ApplicationRecord
     state :finished
     state :failed
 
-    event :check do
+    event :start do
       transitions from: :created, to: :checking
     end
 

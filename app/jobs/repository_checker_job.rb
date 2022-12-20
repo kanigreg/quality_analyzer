@@ -21,7 +21,7 @@ class RepositoryCheckerJob < ApplicationJob
 
     return if check.blank?
 
-    check.check!
+    check.start!
     repo = check.repository
 
     repo_destination = storage.clone!(repo, check_id)
