@@ -24,10 +24,18 @@ class Web::Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
     assert_performed_jobs 1
   end
 
-  test 'should deny access' do
+  test 'should deny access to show check' do
     repo = repositories(:two)
 
-    get repository_path(repo)
+    get repository_check_path(repo, @check)
+
+    assert_redirected_to root_path
+  end
+
+  test 'should deny access to create' do
+    repo = repositories(:two)
+
+    post repository_checks_path(repo)
 
     assert_redirected_to root_path
   end
