@@ -20,6 +20,7 @@ class RepositoryCheckerJob < ApplicationJob
 
     repo_destination = storage.repo_dest(check_id)
     check = Repository::Check.find(check_id)
+    check.check!
     repo = check.repository
 
     github_api.clone!(repo, repo_destination)

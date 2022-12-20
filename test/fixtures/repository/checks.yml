@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  aasm_state: checking
+  aasm_state: created
   reference: 5acf74f
   repository: one
 
@@ -11,10 +11,10 @@ finished_with_issues:
   passed: false
   repository: one
 
-checking:
-  aasm_state: checking
+created:
+  aasm_state: created
   repository: one
 
-ruby_repo_checking:
-  aasm_state: checking
+ruby_repo_check:
+  aasm_state: created
   repository: ruby

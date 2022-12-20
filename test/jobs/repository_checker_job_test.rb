@@ -4,7 +4,7 @@ require 'test_helper'
 
 class RepositoryCheckerJobTest < ActiveJob::TestCase
   test 'should check js repo' do
-    check = repository_checks(:checking)
+    check = repository_checks(:created)
 
     RepositoryCheckerJob.perform_now(check.id)
 
@@ -17,7 +17,7 @@ class RepositoryCheckerJobTest < ActiveJob::TestCase
   end
 
   test 'should check ruby repo' do
-    check = repository_checks(:ruby_repo_checking)
+    check = repository_checks(:ruby_repo_check)
 
     RepositoryCheckerJob.perform_now(check.id)
 
