@@ -8,8 +8,11 @@
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.9.1",
     "esbuild": "^0.15.13",
-    "eslint": "^8.28.0",
-    "sass": "^1.56.1"
+    "sass": "^1.56.1",
+    "eslint": "^8.0.1",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.3",
+    "eslint-plugin-jest": "^24.3.6"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",

@@ -3,7 +3,7 @@
 class Eslint
   class << self
     def check(dest)
-      command = "npx eslint -f json -c lib/linter_configs/.eslintrc.yml #{dest}"
+      command = "npx eslint -f json -c lib/linter_configs/.eslintrc.yml --no-eslintrc #{dest}"
       output, status = Open3.popen3(command) do |_, stdout, _, thread|
         result = stdout.read
         parsed = result.present? ? JSON.parse(result) : []
