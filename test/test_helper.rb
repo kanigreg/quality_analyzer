@@ -4,6 +4,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'webmock/minitest'
+require 'vcr'
 
 OmniAuth.config.test_mode = true
 
@@ -24,6 +25,11 @@ class ActiveSupport::TestCase
   end
 
   # Add more helper methods to be used by all tests here...
+  VCR.configure do |c|
+    c.cassette_library_dir = 'cassettes'
+    c.hook_into :webmock
+  end
+
   class ActionDispatch::IntegrationTest
     def sign_in(user)
       auth_hash = {

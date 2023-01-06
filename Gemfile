@@ -81,7 +81,9 @@ group :test do
   gem 'faker'
   gem 'minitest-power_assert'
   gem 'selenium-webdriver'
+  gem 'vcr'
   gem 'webdrivers'
+  gem 'webmock'
 end
 
 group :production do
@@ -101,4 +103,3 @@ gem 'responders'
 gem 'rollbar'
 gem 'simple_form'
 gem 'slim-rails'
-gem 'webmock'
