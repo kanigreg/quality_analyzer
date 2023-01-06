@@ -6,7 +6,11 @@ class RepositoryLoaderJobTest < ActiveJob::TestCase
   test 'should load repo' do
     repo = repositories(:unloaded)
 
-    RepositoryLoaderJob.perform_now(repo.id)
+    VCR.use_cassette('hook_created_success') do
+      VCR.use_cassette('repo_info_success') do
+        RepositoryLoaderJob.perform_now(repo.id)
+      end
+    end
 
     repo.reload
 

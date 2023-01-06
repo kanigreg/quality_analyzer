@@ -10,8 +10,7 @@ class RepositoryLoaderJob < ApplicationJob
 
     repository.fetch!
 
-    github_api = ApplicationContainer['github_api']
-    github_data = github_api.repository!(repository.github_id, repository.user)
+    github_data = GithubApi.repository!(repository.github_id, repository.user)
 
     repository.update!(
       name: github_data[:name],
@@ -19,7 +18,7 @@ class RepositoryLoaderJob < ApplicationJob
       language: github_data[:language]&.downcase
     )
 
-    github_api.create_hook!(repository, repository.user)
+    GithubApi.create_hook!(repository, repository.user)
 
     repository.mark_as_fetched!
   rescue StandardError => e

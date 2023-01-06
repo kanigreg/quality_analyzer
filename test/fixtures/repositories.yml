@@ -20,7 +20,7 @@ two:
   state: fetched
 
 unloaded:
-  github_id: 3
+  github_id: 64778136
   user: one
   state: created
 
@@ -29,4 +29,11 @@ ruby:
   full_name: ruby/repo
   language: ruby
   user: one
+  state: fetched
+
+quality_analyzer:
+  github_id: 564812942
+  full_name: kanigreg/quality_analyzer
+  language: ruby
+  user: kanigreg
   state: fetched

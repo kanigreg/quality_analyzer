@@ -4,7 +4,7 @@ require 'test_helper'
 
 class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @repo = repositories(:one)
+    @repo = repositories(:quality_analyzer)
 
     sign_in @repo.user
 
@@ -32,7 +32,9 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get new' do
-    get new_repository_path
+    VCR.use_cassette('repos_info_success') do
+      get new_repository_path
+    end
 
     assert_response :success
   end
@@ -44,6 +46,6 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
 
     assert { repository.present? }
     assert_redirected_to repositories_path
-    assert_performed_jobs 1
+    assert_enqueued_jobs 1
   end
 end

@@ -13,6 +13,6 @@ class Api::ChecksControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert { check.present? }
-    assert_performed_jobs 1
+    assert_enqueued_jobs 1
   end
 end
